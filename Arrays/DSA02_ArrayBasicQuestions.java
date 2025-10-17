@@ -21,7 +21,7 @@ public class DSA02_ArrayBasicQuestions {
  */
 
 // calculate the sum of all the elements
-package Arrays;
+package arrays;
 
 import java.util.Scanner;
 

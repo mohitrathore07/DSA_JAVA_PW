@@ -26,7 +26,7 @@ public class DSA01_ArrayBasics {
 }
 */
 
-package Arrays;
+package arrays;
 import java.util.Scanner;
 
 public class DSA01_ArrayBasics {

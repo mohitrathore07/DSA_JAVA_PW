@@ -1,4 +1,4 @@
-package Arrays;
+package arrays;
 
 public class DSA06_QuestionsOnArrays {
     public static void main(String[] args) {

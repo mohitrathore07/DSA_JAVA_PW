@@ -30,7 +30,7 @@ public class DSA03_LinearSeach {
 
  */
 
-  package Arrays;
+  package arrays;
 import java.util.Scanner;
 
 public class DSA03_LinearSeach {
