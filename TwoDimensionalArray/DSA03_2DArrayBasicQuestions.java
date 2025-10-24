@@ -80,6 +80,7 @@ public class DSA03_2DArrayBasicQuestions {
 }
  */
 
+/*
 public class DSA03_2DArrayBasicQuestions {
     public static void main(String[] args) {
         int[][] arr = {{1, 9}, {3, 7}, {8, 5}};
@@ -100,3 +101,59 @@ public class DSA03_2DArrayBasicQuestions {
         }
     }
 }
+*/
+
+// transpose with copy
+public class DSA03_2DArrayBasicQuestions {
+    public static void main(String[] args) {
+        int[][] arr = {{1, 9,7}, {3, 7,2}, {8, 5,3}};
+        int m = arr.length;
+        int n = arr[0].length;
+        int[][] res = new int[n][m];
+
+        for(int i = 0; i < n;i++) {
+            for(int j = 0; j < m; j++) {
+                if(i == j) continue;
+                if(i < j) {
+                    int temp = arr[i][j];
+                    arr[i][j] = arr[j][i];
+                    arr[j][i] = temp;
+                }
+            }
+        }
+        for (int[] b: arr) {
+            for (int ele: b) {
+                System.out.print(ele+" ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+// transpose with copy - method 2
+/*
+public class DSA03_2DArrayBasicQuestions {
+    public static void main(String[] args) {
+        int[][] arr = {{1, 9,7}, {3, 7,2}, {8, 5,3}};
+        int m = arr.length;
+        int n = arr[0].length;
+        int[][] res = new int[n][m];
+
+        for(int i = 0; i < n;i++) {
+            for(int j = 0; j <= i; j++) {
+                if(i == j) continue;
+
+                    int temp = arr[i][j];
+                    arr[i][j] = arr[j][i];
+                    arr[j][i] = temp;
+
+            }
+        }
+        for (int[] b: arr) {
+            for (int ele: b) {
+                System.out.print(ele+" ");
+            }
+            System.out.println();
+        }
+    }
+}*/
