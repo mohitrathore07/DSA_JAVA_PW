@@ -4,7 +4,7 @@ package TwoDimensionalArray;
 
 public class DSA04_RotateMatrix {
     public static void main(String[] args) {
-        int[][] arr = {{1, 9,7}, {3, 7,2}, {8, 5,3}};
+        int[][] arr = {{1, 2,3,3}, {4,5,6,6}, {7, 8,9,9}, {7, 8,9,9}};
         int m = arr.length;
         int n = arr[0].length;
 
@@ -19,6 +19,17 @@ public class DSA04_RotateMatrix {
             }
         }
 
+
+        for (int i = 0; i < m; i++ ) {
+            int a = 0 , b = m-1;
+            while (a < b) {
+                int temp = arr[i][a];
+                arr[i][a] = arr[i][b];
+                arr[i][b] = temp;
+                a++;
+                b--;
+            }
+        }
         for (int [] ele: arr) {
             for(int element: ele) {
                 System.out.print(element+" ");
