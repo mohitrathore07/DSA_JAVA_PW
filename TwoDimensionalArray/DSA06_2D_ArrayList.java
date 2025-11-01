@@ -86,3 +86,38 @@ class Solution {
     }
 }
  */
+
+public class DSA06_2D_ArrayList {
+    public static void main(String[] args) {
+        int[][] a = {{1, 2, 1}, {2, 1, 2}};
+        int[][] b = {{1, 2, 1, 4}, {2, 1, 2, 4}, {1, 1, 1, 2}};
+        if(a[0].length != b.length) {
+            System.out.println("multiplication not possible");
+        }
+        else {
+            int rows = a.length;
+            int cols = b[0].length;
+
+            int[][] c = new int[rows][cols];
+
+            for (int i = 0; i < c.length; i++) {
+                for (int j = 0; j < c[0].length; j++) {
+                    int ele = 0;
+                    int k = 0;
+                    while (k < b.length) {
+                        ele += a[i][k] * b[k][j];
+                        k++;
+                    }
+                    c[i][j] = ele;
+                }
+            }
+
+            for (int[] m : c) {
+                for (int element : m) {
+                    System.out.print(element + " ");
+                }
+                System.out.println();
+            }
+        }
+    }
+}
