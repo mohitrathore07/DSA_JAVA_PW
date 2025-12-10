@@ -87,6 +87,8 @@ class Solution {
 }
  */
 
+/*
+
 public class DSA06_2D_ArrayList {
     public static void main(String[] args) {
         int[][] a = {{1, 2, 1}, {2, 1, 2}};
@@ -121,3 +123,139 @@ public class DSA06_2D_ArrayList {
         }
     }
 }
+
+ */
+
+
+/*
+
+leetcode - 73. Set Matrix Zeroes
+
+
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        int m = matrix.length , n  = matrix[0].length;
+        int[][] helper = new int[m][n];
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                helper[i][j] = matrix[i][j];
+            }
+        }
+
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                if(helper[i][j] == 0){
+                    for(int a = 0; a < m; a++) {
+                        matrix[a][j] = 0;
+                    }
+                    for(int b = 0; b < n; b++) {
+                        matrix[i][b] = 0;
+                    }
+                }
+            }
+        }
+
+    }
+}
+ */
+
+/*
+
+leetcode - 73. Set Matrix Zeroes = method - 2
+
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        int m = matrix.length , n  = matrix[0].length;
+        boolean[] rowmat = new boolean[m];
+        boolean[] colmat = new boolean[n];
+
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                if(matrix[i][j] == 0) {
+                    rowmat[i] = true;
+                    colmat[j] = true;
+                }
+            }
+        }
+
+        for(int a = 0; a < rowmat.length; a++) {
+            if(rowmat[a] == true) {
+                for(int j = 0;j < n;j++) {
+                    matrix[a][j] = 0;
+                }
+            }
+        }
+
+        for(int b = 0; b < colmat.length; b++) {
+            if(colmat[b] == true) {
+                for(int i = 0;i < m;i++) {
+                    matrix[i][b] = 0;
+                }
+            }
+        }
+    }
+}
+ */
+
+/*
+
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        int m = matrix.length , n  = matrix[0].length;
+        boolean row = false;
+        boolean col = false;
+
+        for(int j = 0; j < n; j++) {
+            if(matrix[0][j] == 0) {
+                row = true;
+                break;
+            }
+        }
+
+        for(int i = 0; i < m; i++) {
+            if(matrix[i][0] == 0) {
+                col = true;
+                break;
+            }
+        }
+
+        for(int i = 1; i < m; i++) {
+            for(int j = 1; j < n; j++) {
+                if(matrix[i][j] == 0) {
+                    matrix[i][0] =  0;
+                    matrix[0][j] =  0;
+                }
+            }
+        }
+
+        for(int i = 1; i < m; i++) {
+            if(matrix[i][0] == 0) {
+                for(int j = 1;j < n; j++) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+
+        for(int j = 1; j < n; j++) {
+            if(matrix[0][j] == 0) {
+                for(int i = 1;i < m; i++) {
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+
+        if(row == true) {
+            for(int j = 0; j < n; j++) {
+                matrix[0][j] = 0;
+            }
+        }
+
+        if(col == true) {
+            for(int i = 0; i < m; i++) {
+                matrix[i][0] = 0;
+            }
+        }
+    }
+}
+ */
+
