@@ -45,14 +45,12 @@ public class DSA01_StringBasics {
 }
 */
 
-// pring substrings
+// print substrings
 public class DSA01_StringBasics {
     public static void main(String[] args) {
         String s = "abc";
         for (int i = 0; i < s.length(); i++) {
-            for (int j = 0; j < i; j++) {
-
-            }
+            for (int j = i+1; j <= s.length(); j++) System.out.print(s.substring(i,j) +" "); // since end idx excluding hota h that's why
             System.out.println();
         }
     }
