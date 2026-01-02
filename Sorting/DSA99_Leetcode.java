@@ -58,3 +58,43 @@ public class DSA99_Leetcode {
         print(arr);
     }
 }
+
+/*
+
+
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int[] ans = new int[2];
+        int lo , hi;
+        int fp = -1; lo = 0;hi = nums.length-1;
+
+        while(lo <= hi) {
+            int mid = lo + (hi-lo)/2;
+            if(nums[mid]==target) {
+                if(mid>0 && nums[mid] == nums[mid-1]) hi = mid - 1;
+                else {
+                    fp = mid;
+                    break;
+                }
+            }
+            else if(nums[mid] < target) lo = mid + 1;
+            else if(nums[mid] > target) hi = mid - 1;
+        }
+        int lp = -1; lo = 0; hi = nums.length-1;
+        while(lo <= hi) {
+            int mid = lo + (hi-lo)/2;
+            if(nums[mid]==target) {
+                if(mid+1<(nums.length) && nums[mid] == nums[mid+1]) lo = mid + 1;
+                else {
+                    lp = mid;
+                    break;
+                }
+            }
+            else if(nums[mid] < target) lo = mid + 1;
+            else if(nums[mid] > target) hi = mid - 1;
+        }
+        ans[0] = fp; ans[1] = lp;
+        return ans;
+    }
+}
+ */
