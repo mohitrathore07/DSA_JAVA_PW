@@ -98,3 +98,80 @@ class Solution {
     }
 }
  */
+
+/*
+search in rotated array leetcode - M - 1
+class Solution {
+    public static int binSearch(int[] nums, int target, int lo , int hi) {
+        while(lo<=hi) {
+            int mid = lo + (hi-lo)/2;
+            if(nums[mid] == target) return mid;
+            else if(nums[mid] < target) {
+                lo = mid+1;
+            }
+            else {
+                hi = mid-1;
+            }
+        }
+        return -1;
+    }
+    public int search(int[] nums, int target) {
+        int n = nums.length;
+        if(n <= 3) {
+            for(int i = 0; i<n;i++) {
+                if(nums[i] == target) return i;
+            }
+            return -1;
+        }
+
+
+        int lo = 1, hi=n-2;
+        int pivot = -1;
+        while(lo<=hi) {
+            int mid = lo + (hi-lo)/2;
+            if(nums[mid] > nums[mid-1] && nums[mid] > nums[mid+1]) {
+                pivot=mid;
+                break;
+            }
+            else if(nums[mid] < nums[mid-1] && nums[mid] < nums[mid+1]) {
+                pivot=mid-1;
+                break;
+            }
+            else if(nums[mid] > nums[mid-1] && nums[mid] < nums[mid+1]) {
+                if(nums[mid] > nums[n-1]) lo = mid+1;
+                else hi = mid - 1;
+            }
+        }
+        if(pivot == -1) return binSearch(nums , target, 0, n-1);
+        int left = binSearch(nums,target,0,pivot);
+        if(left != -1) return left;
+        int right = binSearch(nums,target,pivot+1,n-1);
+        return right;
+    }
+}
+ */
+
+//search in rotated array leetcode - M - 2
+/*
+
+class Solution {
+    public int search(int[] nums, int target) {
+       int n = nums.length;
+       int lo = 0, hi = n-1;
+
+       while(lo<=hi) {
+            int mid = lo + (hi-lo)/2;
+            if(nums[mid] == target) return mid;
+            else if(nums[mid] <= nums[hi]) { // right sorterd part me hai
+                if(target > nums[mid] && target <= nums[hi]) lo = mid+1;
+                else hi = mid-1;
+            }
+            else {
+                if(target >= nums[lo] && target < nums[mid]) hi = mid-1;
+                else lo = mid+1;
+            }
+       }
+       return -1;
+    }
+}
+ */
