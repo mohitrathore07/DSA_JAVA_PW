@@ -10,6 +10,8 @@ public class DSA06_Questions {
             if(arr[mid] > arr[mid-1] && arr[mid] > arr[mid+1]) {
                 System.out.println(mid);
                 break;
+
+
             } else if (arr[mid] > arr[mid-1] && arr[mid] < arr[mid+1]) {
                 lo = mid+1;
             } else{
