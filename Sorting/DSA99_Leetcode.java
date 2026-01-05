@@ -176,61 +176,37 @@ class Solution {
 }
  */
 /*
-
-658 leetcode
 class Solution {
-    public List<Integer> findClosestElements(int[] arr, int k, int x) {
-        List<Integer> ans  = new ArrayList<>();
-        int n = arr.length;
-        if( x<arr[0] ) {
-           for(int i = 0; i < k; i++) {
-                ans.add(arr[i]);
-           }
-           return ans;
-        }
-        if(x > arr[n-1]) {
-           for(int i = k; i < n; i++) {
-                ans.add(arr[i]);
-           }
-           return ans;
-        }
-
-        int lo=0, hi = n-1 , lb = n;
-        while(lo<=hi) {
-            int mid = lo+(hi-lo)/2;
-
-            if(arr[mid] >= x) {
-                lb = mid;
-                hi = mid - 1;
-            }
-            else lo = mid + 1;
-        }
-        int j = lb, i = lb - 1;
-        while(k > 0 && i>=0 && j<n) {
-            int di = Math.abs(x-arr[i]);
-            int dj = Math.abs(x-arr[j]);
-            if(di<=dj) {
-                ans.add(arr[i]);
-                i--;
-            }
+    public static boolean helper(int[] weights, int days, int capacity) {
+        int n = weights.length;
+        int d = 0;
+        int load = 0;
+        for(int i = 0;i<n;i++) {
+            if(load+weights[i] <= capacity) load += weights[i];
             else {
-                ans.add(arr[j]);
-                j++;
+                load = weights[i];
+                d++;
             }
-            k--;
         }
-        while(i < 0 && k > 0) {
-            ans.add(arr[j]);
-            j++;
-            k--;
+        if(d < days) return true;
+        return false;
+    }
+    public int shipWithinDays(int[] weights, int days) {
+        int lo = Integer.MIN_VALUE;
+        int hi = 0, n = weights.length;
+        for(int i=0;i<n;i++) {
+            lo = Math.max(lo, weights[i]);
+            hi += weights[i];
         }
-        while(j == n && k > 0) {
-            ans.add(arr[i]);
-            i--;
-            k--;
+        int ans = hi;
+        while(lo<=hi) {
+            int mid = lo + (hi-lo) / 2;
+            if(helper(weights, days, mid)) {
+                ans = Math.min(mid,ans);
+                hi = mid-1;
+            }
+            else lo = mid+1;
         }
-
-        Collections.sort(ans);
         return ans;
     }
 }
