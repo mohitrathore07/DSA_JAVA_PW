@@ -48,10 +48,16 @@ public class DSA01_StringBasics {
 // print substrings
 public class DSA01_StringBasics {
     public static void main(String[] args) {
-        String s = "abc";
-        for (int i = 0; i < s.length(); i++) {
-            for (int j = i+1; j <= s.length(); j++) System.out.print(s.substring(i,j) +" "); // since end idx excluding hota h that's why
-            System.out.println();
+        String s = "aaabbccdee";
+        int count = 1;
+
+        for(int i = 0; i < s.length()-1;i++) {
+            if(s.charAt(i) == s.charAt(i+1)) count++;
+            else {
+                System.out.println(s.charAt(i)+" "+count);
+                count = 1;
+            }
         }
+        System.out.println(s.charAt(s.length()-1)+" "+count);
     }
 }
